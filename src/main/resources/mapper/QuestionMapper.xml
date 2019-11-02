@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybaits.mapper.QuestionMapper">
+  <resultMap id="BaseResultMap" type="com.example.mybaits.entity.Question">
+    <!--@mbg.generated-->
+    <!--@Table question-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="h1Info" jdbcType="VARCHAR" property="h1info" />
+    <result column="h2Info" jdbcType="VARCHAR" property="h2info" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="asker" jdbcType="VARCHAR" property="asker" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, h1Info, h2Info, content, asker
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from question
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.mybaits.entity.Question">
+    <!--@mbg.generated-->
+    insert into question (id, h1Info, h2Info, 
+      content, asker)
+    values (#{id,jdbcType=VARCHAR}, #{h1info,jdbcType=VARCHAR}, #{h2info,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{asker,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.mybaits.entity.Question">
+    <!--@mbg.generated-->
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="h1info != null">
+        h1Info,
+      </if>
+      <if test="h2info != null">
+        h2Info,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="asker != null">
+        asker,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="h1info != null">
+        #{h1info,jdbcType=VARCHAR},
+      </if>
+      <if test="h2info != null">
+        #{h2info,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="asker != null">
+        #{asker,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybaits.entity.Question">
+    <!--@mbg.generated-->
+    update question
+    <set>
+      <if test="h1info != null">
+        h1Info = #{h1info,jdbcType=VARCHAR},
+      </if>
+      <if test="h2info != null">
+        h2Info = #{h2info,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="asker != null">
+        asker = #{asker,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mybaits.entity.Question">
+    <!--@mbg.generated-->
+    update question
+    set h1Info = #{h1info,jdbcType=VARCHAR},
+      h2Info = #{h2info,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      asker = #{asker,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
